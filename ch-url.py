@@ -26,7 +26,7 @@ else:
 def get_request(url):
     try:
         r = requests.get(url, stream=True, allow_redirects=False, timeout=5000)
-        redirect = requests.get(url)
+        # redirect = requests.get(url)
         for a in list(range(10)):
             success = f'20{a}'
             redir = f'30{a}'
@@ -37,7 +37,7 @@ def get_request(url):
             if str(r.status_code) in success:
                 print(f'{url}\t[{color.cyan}{r.status_code}{color.end}]\t[{color.violet}{length}{color.end}]\t[{color.violet}{type}{color.end}]')
             elif str(r.status_code) in redir:
-                print(f'{url}\t[{color.yellow}{r.status_code}{color.end}]\t[{color.violet}{length}{color.end}]\t[{color.violet}{type}{color.end}]\t--> {color.green}{redirect.url}{color.end}')
+                print(f'{url}\t[{color.yellow}{r.status_code}{color.end}]\t[{color.violet}{length}{color.end}]\t[{color.violet}{type}{color.end}]\t') #--> {color.green}{redirect.url}{color.end}')
             elif str(r.status_code) in error:
                 print(f'{url}\t[{color.red}{r.status_code}{color.end}]\t[{color.violet}{length}{color.end}]\t[{color.violet}{type}{color.end}]')
             elif str(r.status_code) in server_error:
